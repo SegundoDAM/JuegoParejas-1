@@ -2,7 +2,6 @@ package Juego;
 
 public class Game {
 	public static void main(String[] args) {
-		int size=4;
 		int[][] tablero,ocultas=new int[Constantes.size][Constantes.size];
 		tablero=CoupleParts.crearTablero();
 		CoupleParts.rellenarOcultas(ocultas);
