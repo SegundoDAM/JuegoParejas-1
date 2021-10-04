@@ -4,6 +4,7 @@ import java.util.Random;
 
 public class Tablero {
 	Cell[][] board;
+	
 	public Tablero() {
 		super();
 		crearTablero();
@@ -65,7 +66,22 @@ public class Tablero {
 		setValueAt(origin, getValueAt(target));
 		setValueAt(target, intercambio);
 	}
-
+	
+	public boolean comprobarParejas(Coordinate origen, Coordinate destino) {
+		return getValueAt(origen) == getValueAt(destino);
+	}
+	public boolean revealPosition(Coordinate origen) {
+		boolean retorno = false;
+		if (!getCellAt(origen).isVisible()) {
+			getCellAt(origen).setVisible(true);
+			retorno = true;
+		}
+		return retorno;
+	}
+	
+	private Cell getCellAt(Coordinate coordinate) {
+		return board[coordinate.getPositionX()][coordinate.getPositionY()];
+	}
 	private void setValueAt(Coordinate coordinate,int value) {
 		board[coordinate.getPositionX()][coordinate.getPositionY()].setValue(value);
 	}
