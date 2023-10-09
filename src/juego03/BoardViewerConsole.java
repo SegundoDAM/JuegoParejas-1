@@ -30,54 +30,53 @@ public class BoardViewerConsole extends BoardViewer {
 	}
 
 	@Override
-	public void showBoard() {
-		System.out.print("   ");
-		for (int i = 0; i < boardPresenter.length(); i++) {
-			System.out.print("   " + i + " ");
+	public void showBoard() {System.out.print("   ");
+	for (int i = 0; i < boardPresenter.length(); i++) {
+		System.out.print("   " + i + " ");
+	}
+	System.out.println();
+	System.out.print("   ");
+	System.out.print("╔");
+	for (int i = 0; i < boardPresenter.length(); i++) {
+		System.out.print("════");
+		if (i != boardPresenter.length() - 1)
+			System.out.print("╦");
+	}
+	System.out.println("╗");
+	for (int i = 0; i < boardPresenter.length(); i++) {
+		System.out.print("  " + i);
+		System.out.print("║ ");
+		Coordinate coordinate = null;
+		for (int j = 0; j < boardPresenter.length(); j++) {
+			coordinate = new Coordinate(i, j);
+			if (boardPresenter.getValueAt(coordinate) < 10 && boardPresenter.getValueAt(coordinate) > -1)
+				System.out.print(" ");
 		}
+		if (boardPresenter.getValueAt(coordinate) == -1)
+			System.out.print("X ");
+		else
+			System.out.print(boardPresenter.getValueAt(coordinate));
+		System.out.print(" ║ ");
 		System.out.println();
-		System.out.print("   ");
-		System.out.print("---");
-		for (int i = 0; i < boardPresenter.length(); i++) {
-			System.out.print("------------");
-			if (i != boardPresenter.length() - 1)
-				System.out.print("╦");
-		}
-		System.out.println("╗");
-		for (int i = 0; i < boardPresenter.length(); i++) {
-			System.out.print("  " + i);
-			System.out.print("║ ");
-			Coordinate coordinate = null;
-			System.out.print(" ");
+		if (i != boardPresenter.length() - 1) {
+			System.out.print("   ");
+			System.out.print("╠");
 			for (int j = 0; j < boardPresenter.length(); j++) {
-				coordinate = new Coordinate(i, j);
-				if (!boardPresenter.getVisibleAt(coordinate))
-					System.out.print("X");
-				else
-					System.out.print(boardPresenter.getValueAt(coordinate));
-				System.out.print("    ");
+				System.out.print("════");
+				if (j != boardPresenter.length() - 1)
+					System.out.print("╬");
 			}
-			System.out.print(" ║ ");
-			System.out.println();
-			if (i != boardPresenter.length() - 1) {
-				System.out.print("   ");
-				System.out.print("╠");
-				for (int j = 0; j < boardPresenter.length(); j++) {
-					System.out.print("�?�?�?�?");
-					if (j != boardPresenter.length() - 1)
-						System.out.print("╬");
-				}
-				System.out.println("╣");
-			} else {
-				System.out.print("   ");
-				System.out.print("╚");
-				for (int h = 0; h < boardPresenter.length(); h++) {
-					System.out.print("�?�?�?�?");
-					if (h != boardPresenter.length() - 1)
-						System.out.print("╩");
-				}
-				System.out.println("�?");
+			System.out.println("╣");
+		} else {
+			System.out.print("   ");
+			System.out.print("╚");
+			for (int h = 0; h < boardPresenter.length(); h++) {
+				System.out.print("════");
+				if (h != boardPresenter.length() - 1)
+					System.out.print("╩");
 			}
+			System.out.println("╝");
+		}
 		}
 
 	}
